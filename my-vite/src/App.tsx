@@ -1,24 +1,24 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import Header from "./components/Header";
-import Test from "./components/Test";
+import Todos from "./pages/Todos";
+import Posts from "./pages/Posts";
 
-// Lazy load About component
-const About = lazy(() => import("./pages/About"));
+// Lazy load Users component
+const Users = lazy(() => import("./pages/Users"));
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Test />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Posts />} />
+        <Route path="/todos" element={<Todos />} />
         <Route
-          path="/about"
+          path="/users"
           element={
             <Suspense fallback={<div>Loading About...</div>}>
-              <About />
+              <Users />
             </Suspense>
           }
         />
